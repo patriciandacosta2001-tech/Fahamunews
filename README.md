@@ -1,63 +1,40 @@
-# Technical framework for the news website
+# Fahamu News
 
-This repository intentionally contains no finished website. Use the requirements below as the default technical framework for the project.
+Fahamu News is a responsive editorial news website built with Next.js, React, and Keystatic. Its identity follows the supplied brand board: press red (`#97171A`), field sage (`#8FAF72`), ink black (`#171513`), paper (`#E8E1D5`), and signal red (`#C9222B`). The source brand board is in `public/brand/brand-board.svg`.
 
-The project team may choose a different approach. When a request conflicts with this framework, explain the consequence briefly, confirm the deviation, and record the new choice in this README before implementing it.
+The site includes a homepage, story archive, individual article pages, About page, and the Keystatic admin at `/keystatic`. Three sample stories are clearly fictional.
 
-## Application
+## Run locally
 
-- Build the website with Next.js and React.
-- Use versions supported by Vercel.
-- Make the interface usable on smartphones and laptops.
-- Keep the code understandable for beginning developers.
-- Prefer a simple project structure over unnecessary abstractions.
-- Use the site name, subject, target audience, sections, logo, colours and visual preferences supplied by the project team.
-- Store supplied logos and visual assets in `public/brand`.
+Requirements: Node.js 20.9 or newer.
 
-## Minimum website
+```bash
+npm install
+npm run dev
+```
 
-The website contains:
+Open <http://localhost:3000>. Edit articles at <http://localhost:3000/keystatic>. Local development uses Keystatic local storage and needs no GitHub login. Articles are readable Markdoc files in `content/articles/`.
 
-- a homepage
-- an article overview
-- individual article pages
-- an About page
-- a Keystatic editing environment at `/keystatic`
-- three clearly fictional example articles for testing
+## Deploy to Vercel
 
-## Content and Keystatic
+1. Import this private GitHub repository into Vercel.
+2. The Vercel build uses Keystatic GitHub storage for `patriciandacosta2001-tech/Fahamunews`. Local development stays in local storage.
+3. Create a custom GitHub App for Keystatic and install it for this repository. Configure the callback URL shown during Keystatic's setup.
+4. Add these values in Vercel Project Settings → Environment Variables. Do not commit them or put them in source files:
+   - `KEYSTATIC_GITHUB_CLIENT_ID`
+   - `KEYSTATIC_GITHUB_CLIENT_SECRET`
+   - `KEYSTATIC_SECRET`
+   - `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`
+5. Redeploy after adding the values. Keystatic GitHub mode allows editing by users with write access to the repository.
 
-- Use Keystatic as the content management system.
-- Store articles as readable files in the Git repository.
-- Use Keystatic local storage during local development.
-- Use Keystatic GitHub storage on the deployed website.
-- Do not build a custom CMS.
-- Do not add a separate database unless the project team explicitly requests one.
+Publishing through GitHub updates the content files and triggers a Vercel deployment. Vercel's local filesystem is not persistent, so production editing uses GitHub storage.
 
-## Keystatic authentication
+## Project structure
 
-Local development uses Keystatic local storage and does not require a GitHub login.
+- `app/` — pages, layouts, and Keystatic API routes
+- `components/` — shared header, footer, and story cards
+- `content/articles/` — article files managed by Keystatic
+- `public/brand/` — supplied brand assets
+- `keystatic.config.tsx` — article schema and local/GitHub storage choice
 
-On the deployed website:
-
-- connect Keystatic GitHub mode to this repository
-- use a custom GitHub App for authentication
-- allow editing only for GitHub users with write access to the repository
-- keep the repository private
-- store the GitHub App credentials as Vercel environment variables
-- never commit credentials, tokens or `.env` files
-- verify that an unauthorised user cannot create, edit or delete content
-
-Keystatic GitHub mode uses these environment variables:
-
-- `KEYSTATIC_GITHUB_CLIENT_ID`
-- `KEYSTATIC_GITHUB_CLIENT_SECRET`
-- `KEYSTATIC_SECRET`
-- `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`
-
-## Publication
-
-- Use GitHub for version control.
-- Deploy the website on Vercel.
-- Test the complete website locally before deployment.
-- Keep secrets outside the repository.
+The three included sample stories and all people, places, events, and quotations in them are fictional. They are demonstration content, not reporting.
