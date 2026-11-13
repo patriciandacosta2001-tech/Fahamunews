@@ -15,7 +15,8 @@ export default config({
         summary: fields.text({ label: "Summary", multiline: true }),
         category: fields.select({ label: "Category", options: [
           { label: "World", value: "World" }, { label: "Technology", value: "Technology" },
-          { label: "Culture", value: "Culture" }, { label: "Environment", value: "Environment" }
+          { label: "Culture", value: "Culture" }, { label: "Environment", value: "Environment" },
+          { label: "Politics", value: "Politics" }, { label: "Sport", value: "Sport" }
         ], defaultValue: "World" }),
         date: fields.date({ label: "Publication date" }),
         author: fields.text({ label: "Author" }),

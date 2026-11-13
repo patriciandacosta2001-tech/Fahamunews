@@ -2,7 +2,7 @@
 
 Fahamu News is a responsive editorial news website built with Next.js, React, and Keystatic. Its identity follows the supplied brand board: press red (`#97171A`), field sage (`#8FAF72`), ink black (`#171513`), paper (`#E8E1D5`), and signal red (`#C9222B`). The source brand board is in `public/brand/brand-board.svg`.
 
-The site includes a homepage, story archive, individual article pages, About page, and the Keystatic admin at `/keystatic`. Three sample stories are clearly fictional.
+The site includes a homepage, story archive, individual article pages, About page, and the Keystatic admin at `/keystatic`. The archive includes Africa-focused coverage with source links, plus three clearly labelled fictional sample stories from the original demo.
 
 ## Run locally
 
@@ -38,3 +38,5 @@ Publishing through GitHub updates the content files and triggers a Vercel deploy
 - `keystatic.config.tsx` — article schema and local/GitHub storage choice
 
 The three included sample stories and all people, places, events, and quotations in them are fictional. They are demonstration content, not reporting.
+
+New news articles are original summaries and explainers. Each includes links to the reporting or official records used, so readers can check the source material.
